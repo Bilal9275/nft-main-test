@@ -2,15 +2,15 @@ import "../../globals.css";
 import { useEffect, useState } from "react";
 import { AppPropsWithLayout } from "@/types";
 import { Toaster } from "@/components/ui/sonner";
-import "@rainbow-me/rainbowkit/styles.css";
+// import "@rainbow-me/rainbowkit/styles.css";
 import MainLayout from "@/components/layouts/Main.layout";
 
 import Web3ModalProvider from "@/context";
 import { Props } from "@/types";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { cookieToInitialState } from "wagmi";
-import { config } from "@/config";
+// import { cookieToInitialState } from "wagmi";
+// import { config } from "@/config";
 
 export const metadata: Metadata = {
   title: "Create Next App",

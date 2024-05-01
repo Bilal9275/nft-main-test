@@ -1,7 +1,7 @@
-import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
+// import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 
-import { cookieStorage, createStorage } from "wagmi";
-import { mainnet, pulsechain } from "wagmi/chains";
+// import { cookieStorage, createStorage } from "wagmi";
+// import { mainnet, pulsechain } from "wagmi/chains";
 
 // Get projectId at https://cloud.walletconnect.com
 export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
@@ -16,15 +16,15 @@ const metadata = {
 };
 
 // Create wagmiConfig
-const chains = [mainnet, pulsechain] as const;
-export const config = defaultWagmiConfig({
-  chains,
-  projectId,
-  metadata,
-  ssr: true,
-  enableCoinbase: true,
-  enableWalletConnect: true,
-  storage: createStorage({
-    storage: cookieStorage,
-  }),
-});
+// const chains = [mainnet, pulsechain] as const;
+// export const config = defaultWagmiConfig({
+//   chains,
+//   projectId,
+//   metadata,
+//   ssr: true,
+//   enableCoinbase: true,
+//   enableWalletConnect: true,
+//   storage: createStorage({
+//     storage: cookieStorage,
+//   }),
+// });
