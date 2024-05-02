@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     useWeb3ModalAccount,
     createWeb3Modal,
@@ -58,8 +58,12 @@ createWeb3Modal({
     '--w3m-color-mix': '#fff',
   }
 });
-const WalletConnection = () => {
+const WalletConnection = ({setWalletAddress} : any) => {
     const { address } = useWeb3ModalAccount();
+
+    useEffect(()=>{
+      setWalletAddress(address)
+    }, [address])
   return (
     <div style={{ backgroundColor: '#0f172a', color: 'white', borderRadius: '25px' }}>
     <w3m-button></w3m-button>

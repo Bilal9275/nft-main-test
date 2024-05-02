@@ -163,7 +163,7 @@ export const stakeNfts = [
     stake: "VENTUSPOWER",
   },
   {
-    name: "FRACTIONAL ALPHAPOWER",
+    name: "FRACTIONAL ALPHAPOWER NFT",
     url: Images.nft11,
     // link: "https://nftgenerator.io/fractionalized-alpha-power",
     address: "0x84b890B0801C0E18E43E3252a35E376Fd3369CDD",
@@ -189,7 +189,7 @@ export const stakeNfts = [
   },
 
   {
-    name: "GOOD/HOA LP Token",
+    name: "LP Token",
     url: Images.nft9,
     // link: "",
     address: "0x4c6f55ee4a9ab9266c5c8787af52681b1c6c6e14",
