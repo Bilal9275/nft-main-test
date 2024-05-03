@@ -278,19 +278,6 @@ export const nftAbi : any = [
     },
     {
         "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "newValue",
-                "type": "uint256"
-            }
-        ],
-        "name": "SaleMaxMintChanged",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
         "inputs": [],
         "name": "SalePaused",
         "type": "event"
@@ -342,19 +329,6 @@ export const nftAbi : any = [
     {
         "inputs": [],
         "name": "PRESALE_MAX_MINT",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "SALE_MAX_MINT",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -990,19 +964,6 @@ export const nftAbi : any = [
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint32",
-                "name": "number",
-                "type": "uint32"
-            }
-        ],
-        "name": "setTokensPublicsaleMaxPerWallet",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
         "inputs": [],
         "name": "startPresale",
         "outputs": [],
@@ -1157,44 +1118,6 @@ export const nftAbi : any = [
         "name": "transferOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "name": "userPresaleMinted",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "name": "userPublicsaleMinted",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
         "type": "function"
     },
     {

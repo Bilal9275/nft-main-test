@@ -25,8 +25,6 @@ const jsonRpcURL = [
   "https://rpc-pulsechain.g4mm4.io",
 ];
 
-
-
 const Stake = () => {
   const web3 = new Web3(window.ethereum as any);
   const [selected, setSelected] = useState(null as any);
@@ -38,7 +36,13 @@ const Stake = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [walletAddress, setWalletAddress] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
-  const [claimLoading,setClaimLoading] = useState<boolean>(false);
+  const [claimLoading, setClaimLoading] = useState<boolean>(false);
+  const [calculateLPStakingRewards, setCalculateLPStakingRewards] =
+    useState<any>(0.0);
+  const [calculateNFTStakingRewards, setCalculateNFTStakingRewards] =
+    useState<any>(0.0);
+  const [calculateTokenStakingRewards, setCalculateTokenStakingRewards] =
+    useState<any>(0.0);
   const NFTstakingContract = () => {
     const nft_Contract = new web3.eth.Contract(contractAbi, contractAddress);
     return nft_Contract;
@@ -109,6 +113,8 @@ const Stake = () => {
 
   const handleHFT = async () => {
     try {
+      console.log("contractAddresss", contractAddresss);
+
       const nft_Contract = new web3.eth.Contract(nftAbi, contractAddresss);
       const token_contract = new web3.eth.Contract(tokenAbi, contractAddresss);
       const nftStakingContract = NFTstakingContract();
@@ -120,207 +126,286 @@ const Stake = () => {
       if (walletAddress) {
         if (contractName == "GEHENNAPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-            .approve(contractAddress, value.toString()).send({
+            .approve(contractAddress, value.toString())
+            .send({
               from: walletAddress,
             });
-          if(approveResponse){
-            const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-              from :walletAddress
-            })
-            if(stakeNft){
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
               setLoading(false);
-              toast.success("GEHENNAPOWER NFT stake successfully.")
+              toast.success("GEHENNAPOWER NFT stake successfully.");
             }
           }
-        } else if(contractName == "AMAZONIAPOWER NFT"){
+        } else if (contractName == "AMAZONIAPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("AMAZONIAPOWER NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("AMAZONIAPOWER NFT stake successfully.");
+            }
           }
-        }
-        } else if(contractName == "ANGELOPOWER NFT"){
+        } else if (contractName == "ANGELOPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("ANGELOPOWER NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("ANGELOPOWER NFT stake successfully.");
+            }
           }
-        }
-        } else if(contractName == "AQUAPOWER NFT"){
+        } else if (contractName == "AQUAPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("AQUAPOWER NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("AQUAPOWER NFT stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "CATENAPOWER  NFT"){
+        } else if (contractName == "CATENAPOWER  NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("CATENAPOWER NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("CATENAPOWER NFT stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "TERRAPOWER NFT"){
+        } else if (contractName == "TERRAPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("TERRAPOWER NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("TERRAPOWER NFT stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "VENTUSPOWER NFT"){
+        } else if (contractName == "VENTUSPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("VENTUSPOWER NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("VENTUSPOWER NFT stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "FRACTIONAL ALPHAPOWER NFT"){
+        } else if (contractName == "FRACTIONAL ALPHAPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("FRACTIONAL ALPHAPOWER NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("FRACTIONAL ALPHAPOWER NFT stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "BLUECARD NFT"){
+        } else if (contractName == "BLUECARD NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("BLUECARD NFT stake successfully.")
+            .approve(contractAddress, value.toString())
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value.toString())
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("BLUECARD NFT stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "PULSEPOWER NFT"){
+        } else if (contractName == "PULSEPOWER NFT") {
           const approveResponse = await nft_Contract.methods
-          .approve(contractAddress, value.toString()).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, value.toString()).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("PULSEPOWER NFT stake successfully.")
+            .approve(contractAddress, value)
+            .send({
+              from: walletAddress,
+            });
+          console.log("approveResponse", approveResponse);
+
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, value)
+              .send({
+                from: walletAddress,
+              });
+            console.log("stakeNft", stakeNft);
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("PULSEPOWER NFT stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "LP Token"){
-          const valueInWei = web3.utils.toWei(value.toString(), 'ether');
+        } else if (contractName == "LP Token") {
+          const valueInWei = web3.utils.toWei(value.toString(), "ether");
           const approveResponse = await token_contract.methods
-          .approve(contractAddress, valueInWei).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, valueInWei).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("LP Token stake successfully.")
+            .approve(contractAddress, valueInWei)
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, valueInWei)
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("LP Token stake successfully.");
+            }
           }
-        }
-        }else if(contractName == "GOOD Token"){
-          const valueInWei = web3.utils.toWei(value.toString(), 'ether');
+        } else if (contractName == "GOOD Token") {
+          const valueInWei = web3.utils.toWei(value.toString(), "ether");
           const approveResponse = await token_contract.methods
-          .approve(contractAddress, valueInWei).send({
-            from: walletAddress,
-          });
-        if(approveResponse){
-          const stakeNft = await nftStakingContract.methods.stakeNFT(contractAddresss, valueInWei).send({
-            from :walletAddress
-          })
-          if(stakeNft){
-            setLoading(false);
-            toast.success("GOOD Token stake successfully.")
+            .approve(contractAddress, valueInWei)
+            .send({
+              from: walletAddress,
+            });
+          if (approveResponse) {
+            const stakeNft = await nftStakingContract.methods
+              .stakeNFT(contractAddresss, valueInWei)
+              .send({
+                from: walletAddress,
+              });
+            if (stakeNft) {
+              setLoading(false);
+              toast.success("GOOD Token stake successfully.");
+            }
           }
-        }
         }
       } else {
         setLoading(false);
         toast.error("Please Wallet Connect first.");
-      } 
+      }
     } catch (e: any) {
       setLoading(false);
-      toast.error(e)
+      toast.error(e);
       console.log("e", e);
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
-  const handleClaim = async()=>{
-    try{
+  const handleClaim = async () => {
+    try {
       setClaimLoading(true);
       const nftStakingContract = NFTstakingContract();
-      if(walletAddress){
-        const claimRewaird = await nftStakingContract.methods.claimRewards().send({from: walletAddress})
-        if(claimRewaird){
+      if (walletAddress) {
+        const claimRewaird = await nftStakingContract.methods
+          .claimRewards()
+          .send({ from: walletAddress });
+        if (claimRewaird) {
           setClaimLoading(false);
-          toast.success("rewards claim successfully.")
+          toast.success("rewards claim successfully.");
         }
-      } else{
+      } else {
         setClaimLoading(false);
         toast.error("Please Wallet Connect first.");
       }
-    }catch(err: any){
+    } catch (err: any) {
       console.log("e", err);
       setClaimLoading(false);
-      toast.error(err)
+      toast.error(err);
     }
-  }
+  };
+  const getTokenDetails = async () => {
+    try {
+      const nftContract = NFTstakingContract();
+      // const getNFTStaking = await nftContract.methods
+      //   .getNFTStakes(
+      //     "0xe87F5E7E38b6d76B96139d7c8463B580a1c1f0eD",
+      //     "0x6e8A8916302f84110C5D308A9586208a6E892798"
+      //   )
+      //   .call();
+      // console.log("getNFTStaking", getNFTStaking);
+      if (walletAddress) {
+        const calculateLPStakingRewards = await nftContract.methods
+          .calculateLPStakingRewards(walletAddress)
+          .call();
+        setCalculateLPStakingRewards(
+          Number(calculateLPStakingRewards).toFixed(2)
+        );
+        const calculateNFTStakingRewards = await nftContract.methods
+          .calculateNFTStakingRewards(walletAddress)
+          .call();
+        setCalculateNFTStakingRewards(
+          Number(calculateNFTStakingRewards).toFixed(2)
+        );
+        const calculateTokenStakingRewards = await nftContract.methods
+          .calculateTokenStakingRewards(walletAddress)
+          .call();
+        setCalculateTokenStakingRewards(
+          Number(calculateTokenStakingRewards).toFixed(2)
+        );
+      }
+    } catch (e) {
+      console.log("e", e);
+    }
+  };
+
+  useEffect(() => {
+    getTokenDetails();
+  }, [walletAddress]);
   return (
     <>
       <div
@@ -339,53 +424,78 @@ const Stake = () => {
                 Staking Details
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+              <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
                 <Card className="p-2">
-                  <div className="h-[200px]">
-                    <h3 className="font-bold mb-2 text-xl text-[#fdd122]  bg-white rounded-[6px] p-[10px] text-center">
+                  <div className="h-[150px]">
+                    <h3 className="font-bold mb-2 text-md text-[#fdd122]  bg-white rounded-[6px] p-[6px] text-center">
                       NFT
                     </h3>
                     <Divider />
-                    <div className="flex justify-center items-center h-[80%]">
-                      <p className=" text-2xl">Stake</p>
+                    <div className="flex justify-center items-center h-[70%]">
+                      <p className=" text-md">Stake</p>
                     </div>
                   </div>
                 </Card>
                 {/* 2nd card */}
                 <Card className="p-2">
-                  <div className="h-[200px]">
-                    <h3 className="font-bold mb-2 text-xl text-[#fdd122]  bg-white rounded-[6px] p-[10px] text-center">
-                      Good Token
+                  <div className="h-[150px]">
+                    <h3 className="font-bold mb-2 text-md text-[#fdd122]  bg-white rounded-[6px] p-[6px] text-center">
+                      GOOD TOKEN
                     </h3>
                     <Divider />
-                    <div className="flex justify-center items-center h-[80%]">
-                      <p className=" text-2xl">Stake: 1000</p>
+                    <div className="flex justify-center items-center h-[70%]">
+                      <p className=" text-md">Stake</p>
                     </div>
                   </div>
                 </Card>
                 <Card className="p-2">
-                  <div className="h-[200px]">
-                    <h3 className="font-bold mb-2 text-xl text-[#fdd122]  bg-white rounded-[6px] p-[10px] text-center">
-                      LP Token
+                  <div className="h-[150px]">
+                    <h3 className="font-bold mb-2 text-md text-[#fdd122]  bg-white rounded-[6px] p-[6px] text-center">
+                      LP TOKEN
                     </h3>
                     <Divider />
-                    <div className="flex justify-center items-center h-[80%]">
-                      <p className=" text-2xl">Stake: 10,000</p>
+                    <div className="flex justify-center items-center h-[70%]">
+                      <p className=" text-md">Stake</p>
                     </div>
                   </div>
                 </Card>
               </div>
-              <Card className="mt-5">
-                <div className="p-2">
-                  {/* <h3 className='font-bold mb-2 text-xl'>Reward</h3>
-                <Divider /> */}
-                  <div className="flex justify-center items-center h-[80%] ">
-                    <p className=" text-xl bg-white rounded-[7px]">
-                      Reward: 0.001 GOOD
-                    </p>
+              <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+                <Card className="p-2">
+                  <div className="h-[150px]">
+                    <h3 className="font-bold mb-2 text-md text-[#fdd122]  bg-white rounded-[6px] p-[6px] text-center">
+                      NFT REWARD
+                    </h3>
+                    <Divider />
+                    <div className="flex justify-center items-center h-[70%]">
+                      <p className=" text-md">Amount: {calculateNFTStakingRewards}</p>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+                {/* 2nd card */}
+                <Card className="p-2">
+                  <div className="h-[150px]">
+                    <h3 className="font-bold mb-2 text-md text-[#fdd122]  bg-white rounded-[6px] p-[6px] text-center">
+                      GOOD TOKEN REWARD
+                    </h3>
+                    <Divider />
+                    <div className="flex justify-center items-center h-[70%]">
+                    <p className=" text-md">Amount: {calculateTokenStakingRewards}</p>
+                    </div>
+                  </div>
+                </Card>
+                <Card className="p-2">
+                  <div className="h-[150px]">
+                    <h3 className="font-bold mb-2 text-md text-[#fdd122]  bg-white rounded-[6px] p-[6px] text-center">
+                      LP TOKEN REWARD
+                    </h3>
+                    <Divider />
+                    <div className="flex justify-center items-center h-[70%]">
+                    <p className=" text-md">Amount: {calculateLPStakingRewards}</p>
+                    </div>
+                  </div>
+                </Card>
+              </div>
             </Card>
 
             <Card className="my-10 p-5 shadow-sm">
@@ -423,15 +533,19 @@ const Stake = () => {
                       <>Stake {buttonValue}</>
                     )}
                   </Button>
-                  <Button className="w-full md:w-fit" onClick={handleClaim} disabled={claimLoading}>
-                  {claimLoading ? (
+                  <Button
+                    className="w-full md:w-fit"
+                    onClick={handleClaim}
+                    disabled={claimLoading}
+                  >
+                    {claimLoading ? (
                       <>
                         <span className="ms-2">Loading...</span>
                       </>
                     ) : (
                       <>Claim</>
                     )}
-                    </Button>
+                  </Button>
                   <Button className="w-full md:w-fit">
                     UnStake {buttonValue}
                   </Button>

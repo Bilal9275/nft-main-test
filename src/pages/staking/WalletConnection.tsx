@@ -22,13 +22,6 @@ const chains = [
     rpcUrl: "https://arb1.arbitrum.io/rpc",
   },
   {
-    chainId: 97,
-    name: "BSC Testnet",
-    currency: "BNB",
-    explorerUrl: "https://explorer.binance.org/smart-testnet",
-    rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545",
-  },
-  {
     chainId: 369,
     name: "PulseChain",
     currency: "PLS",
