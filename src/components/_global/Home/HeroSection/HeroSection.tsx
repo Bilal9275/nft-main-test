@@ -119,7 +119,7 @@ const Home_Header = () => {
                   MINT OUR NFTS
                 </div>
                 {/* SLIDER */}
-                <div className=" w-full max-w-xl">
+                <div className="w-4/5 flex justify-center items-center">
                   <NFTCarousel
                     nfts={nfts}
                     conWidth="xl"
