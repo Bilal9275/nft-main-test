@@ -24,39 +24,68 @@ const Home_Header = () => {
         className="py-10"
       >
         <section className="container">
-          <Image src={Images.logo} alt="logo"/>
+          <Image src={Images.logo} alt="logo" />
           <div className={styles.heroSectionContainer}>
             <div className={styles.heroSection}>
               <div className="space-y-5 w-full flex flex-col justify-center items-center">
                 <div className="space-x-3 flex justify-center items-center flex-wrap gap-5">
-                {buttons.map((button) => (
-        <Link
-          href={button.link ?? "/comingsoon"}
-          key={button.id}
-        >
-          <div
-            className={cn(
-              "w-[150px] h-[120px] flex justify-center items-center bg-no-repeat font-bold text-xl uppercase cursor-pointer",
-              button.name === "Bundle"
-                ? "text-[#8A366E]"
-                : "text-white",
-              {
-                "hover:shadow-md": isHovered // Apply shadow on hover
-              }
-            )}
-            style={{
-              backgroundImage: `url(${button.image})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            {button.name}
-          </div>
-        </Link>
-      ))}
+                  {buttons.map((button) => (
+                    <> 
+                    {
+                      button.id === 5 ? (
+                        <a href="https://dex.9mm.pro/?inputCurrency=0xA89dfb6c48a2776683d1d0e654a988dAA679A76f&outputCurrency=0x7901a3569679AEc3501dbeC59399F327854a70fe" target="_blank" key={button.id}>
+                        <div
+                          className={cn(
+                            "w-[150px] h-[120px] flex justify-center items-center bg-no-repeat font-bold text-xl uppercase cursor-pointer",
+                            button.name === "Bundle"
+                              ? "text-[#8A366E]"
+                              : "text-white",
+                            {
+                              "hover:shadow-md": isHovered,
+                            }
+                          )}
+                          style={{
+                            backgroundImage: `url(${button.image})`,
+                            backgroundSize: "contain",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                          }}
+                          onMouseEnter={() => setIsHovered(true)}
+                          onMouseLeave={() => setIsHovered(false)}
+                        >
+                          {button.name}
+                        </div>
+                      </a>
+                      ) : (
+                        <Link href={button.link ?? "/comingsoon"} key={button.id}>
+                        <div
+                          className={cn(
+                            "w-[150px] h-[120px] flex justify-center items-center bg-no-repeat font-bold text-xl uppercase cursor-pointer",
+                            button.name === "Bundle"
+                              ? "text-[#8A366E]"
+                              : "text-white",
+                            {
+                              "hover:shadow-md": isHovered,
+                            }
+                          )}
+                          style={{
+                            backgroundImage: `url(${button.image})`,
+                            backgroundSize: "contain",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                          }}
+                          onMouseEnter={() => setIsHovered(true)}
+                          onMouseLeave={() => setIsHovered(false)}
+                        >
+                          {button.name}
+                        </div>
+                      </Link>
+                      )
+                    }
+                   
+                    </>
+                    
+                  ))}
                   {/* {buttons.map((button) => {
                     return (
                       <>

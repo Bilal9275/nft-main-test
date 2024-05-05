@@ -47,7 +47,8 @@ export default function NFTCarouselStake({ nfts }: INftCarousel) {
                     {/* <span className="text-3xl font-semibold">{index + 1}</span> */}
                   </CardContent>
                 </Card>
-                <p className="font-semibold text-[10px] mt-2 text-center">{`Stake: ${_.stake} : Earn ${_.reward}`}</p>
+                <p className="font-semibold text-[10px] mt-2 text-center">{`Stake: ${_.stake} `}</p>
+                <p className="font-semibold text-[10px]  text-center">{`Earn ${_.reward}`}</p>
               </div>
             </CarouselItem>
           </React.Fragment>
