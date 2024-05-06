@@ -14,7 +14,7 @@ import WalletConnection from "./WalletConnection";
 import { nftAbi } from "@/constant/nftContract";
 import Landing from "@/components/home/Landing";
 import { toast } from "react-toastify";
-import { tokenAbi } from "@/constant/tokenContract";
+import { tokenAbi,LptokenAbi } from "@/constant/tokenContract";
 import Images from "@/Assets/index";
 import Link from "next/link";
 const jsonRpcURL = [
@@ -125,6 +125,10 @@ const Stake = () => {
       const nft_Contract = new web3.eth.Contract(nftAbi, NFTContractAddresss);
       const token_contract = new web3.eth.Contract(
         tokenAbi,
+        NFTContractAddresss
+      );
+      const token_contracts = new web3.eth.Contract(
+        LptokenAbi,
         NFTContractAddresss
       );
       const nftStakingContract = NFTstakingContract();
@@ -323,7 +327,7 @@ const Stake = () => {
             return;
           }
           setLpError(false);
-          const approveResponse = await token_contract.methods
+          const approveResponse = await token_contracts.methods
             .approve(contractAddress, valueInWei)
             .send({
               from: walletAddress,
