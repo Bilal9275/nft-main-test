@@ -3,7 +3,7 @@ import { NFTCarousel } from "@/components/_global/Home/HeroSection/NFTCarousel";
 import { nfts } from "@/components/_global/Home/HeroSection/constant";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DropDown from "../../components/_global/Staking/DropdownList";
 import NFTCarouselStake from "../../components/_global/Staking/NFTCarousel";
 import { Input } from "@/components/ui/input";
@@ -50,6 +50,8 @@ const Stake = () => {
   const [nftTokenLoading, setNftTokenLoading] = useState<boolean>(false);
   const [nftTokenDetails, setNftTokenDetails] = useState<any>([]);
   const [nftTokenUnstakeLoading, setNftTokenUnstakeLoading] = useState<any>({});
+  const [lastUpdateTime, setLastUpdateTime] = useState(0);
+  const updateRewardIntervalRef = useRef<any>(null);
   const NFTstakingContract = () => {
     const nft_Contract = new web3.eth.Contract(contractAbi, contractAddress);
     return nft_Contract;
@@ -470,8 +472,6 @@ const Stake = () => {
       }));
     }
   };
-
-  // Good Token
   const goodTokenDetails = async () => {
     try {
       const array: any = [];
@@ -540,7 +540,7 @@ const Stake = () => {
       }));
     }
   };
-
+  
   // Lp Token
   const lpTokenDetails = async () => {
     try {
@@ -606,10 +606,17 @@ const Stake = () => {
       }));
     }
   };
+
   useEffect(() => {
     getNftTokenDetails();
     goodTokenDetails();
     lpTokenDetails();
+    updateRewardIntervalRef.current = setInterval(async () => {
+      await goodTokenDetails();
+      await getNftTokenDetails();
+    }, 60000);
+    return () => clearInterval(updateRewardIntervalRef.current);
+    
   }, [walletAddress]);
   return (
     <>
