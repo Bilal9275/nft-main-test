@@ -1,4 +1,4 @@
-export const contractAddress = "0x6CAd5bb7cd642327E52e569eC962d7B698B16DE2";
+export const contractAddress = "0xC8B325173ad369055E694f71252a44727D8a12E0";
 export const contractAbi: any = [
     {
         "inputs": [
@@ -429,7 +429,31 @@ export const contractAbi: any = [
         "outputs": [
             {
                 "internalType": "uint256",
-                "name": "contractBalance",
+                "name": "totalContractBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "availableForReward",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            }
+        ],
+        "name": "checkTotalUserReward",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
                 "type": "uint256"
             }
         ],
@@ -894,6 +918,29 @@ export const contractAbi: any = [
     {
         "inputs": [
             {
+                "internalType": "address",
+                "name": "_token",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "receiver",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "rescueToken",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "uint256",
                 "name": "amount",
                 "type": "uint256"
@@ -938,6 +985,32 @@ export const contractAbi: any = [
     {
         "inputs": [],
         "name": "tokenStakingRewardRate",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalStakedGoodToken",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalStakedLpToken",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -1018,4 +1091,4 @@ export const contractAbi: any = [
         "stateMutability": "nonpayable",
         "type": "function"
     }
-]
+];

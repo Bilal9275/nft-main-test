@@ -33,7 +33,7 @@ const Home_Header = () => {
                     <> 
                     {
                       button.id === 5 ? (
-                        <a href="https://dex.9mm.pro/?inputCurrency=0xA89dfb6c48a2776683d1d0e654a988dAA679A76f&outputCurrency=0x7901a3569679AEc3501dbeC59399F327854a70fe" target="_blank" key={button.id}>
+                        <a href="https://swap.9mm.pro/swap?inputCurrency=0x7901a3569679aec3501dbec59399f327854a70fe&outputCurrency=0xa89dfb6c48a2776683d1d0e654a988daa679a76f" target="_blank" key={button.id}>
                         <div
                           className={cn(
                             "w-[150px] h-[120px] flex justify-center items-center bg-no-repeat font-bold text-xl uppercase cursor-pointer",
