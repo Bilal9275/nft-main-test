@@ -109,7 +109,7 @@ const Stake = () => {
       setInputValue("NFT Id");
     } else if (value == "LP Token") {
       setContractName("LP Token");
-      setContractAddress("0x4c6f55ee4a9ab9266c5c8787af52681b1c6c6e14");
+      setContractAddress("0xddBd618A7396BD928Ce0A516dcb1EE0aDd0Dc744");
       getButtonValue("Lp Token");
       setInputValue("Lp Amount ");
     } else if (value == "GOOD Token") {
