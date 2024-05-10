@@ -319,7 +319,7 @@ const Stake = () => {
         } else if (contractName == "LP Token") {
           const valueInWei = web3.utils.toWei(value.toString(), "ether");
           let minimunStakeLp = await nftStakingContract.methods
-            .minimumStakeLp()
+            .minimumStakeLP()
             .call();
           minimunStakeLp = Number(minimunStakeLp) / 1e18;
           if (value < minimunStakeLp) {
