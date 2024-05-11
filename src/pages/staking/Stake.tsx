@@ -14,7 +14,7 @@ import WalletConnection from "./WalletConnection";
 import { nftAbi } from "@/constant/nftContract";
 import Landing from "@/components/home/Landing";
 import { toast } from "react-toastify";
-import { tokenAbi,LptokenAbi } from "@/constant/tokenContract";
+import { tokenAbi, LptokenAbi } from "@/constant/tokenContract";
 import Images from "@/Assets/index";
 import Link from "next/link";
 const jsonRpcURL = [
@@ -391,12 +391,23 @@ const Stake = () => {
       setClaimLoading(true);
       const nftStakingContract = NFTstakingContract();
       if (walletAddress) {
-        const claimRewaird = await nftStakingContract.methods
-          .claimRewards()
-          .send({ from: walletAddress });
-        if (claimRewaird) {
+        const checkGoodBalance = await nftStakingContract.methods
+          .checkGoodBalance()
+          .call();
+        const checkTotalUserReward = await nftStakingContract.methods
+          .checkTotalUserReward(walletAddress)
+          .call();
+        if (checkTotalUserReward < checkGoodBalance?.availableForReward) {
+          const claimRewaird = await nftStakingContract.methods
+            .claimRewards()
+            .send({ from: walletAddress });
+          if (claimRewaird) {
+            setClaimLoading(false);
+            toast.success("rewards claim successfully.");
+          }
+        } else {
           setClaimLoading(false);
-          toast.success("rewards claim successfully.");
+          toast.error("Available reward insufficient.");
         }
       } else {
         setClaimLoading(false);
@@ -544,7 +555,7 @@ const Stake = () => {
       }));
     }
   };
-  
+
   // Lp Token
   const lpTokenDetails = async () => {
     try {
@@ -620,7 +631,6 @@ const Stake = () => {
       await getNftTokenDetails();
     }, 60000);
     return () => clearInterval(updateRewardIntervalRef.current);
-    
   }, [walletAddress]);
   return (
     <>
