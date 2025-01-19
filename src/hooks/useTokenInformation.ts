@@ -10,6 +10,8 @@ interface ReturnProps {
     totalSupply: bigint
 }
 
+// Mustafa Tasks
+
 const useTokenInformation = (tokenAddress: any, userAddress: any) => {
     // const address = userAddress
     // const [tokenInfo, setTokenInfo] = useState<ReturnProps>({
