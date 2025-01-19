@@ -20,6 +20,8 @@ if (!projectId) throw new Error("Project ID is not defined");
 //   },
 // });
 
+// Testing
+
 export default function Web3ModalProvider({
   children,
   // initialState,
